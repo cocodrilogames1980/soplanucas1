@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#070916">
+<title>Sopla nucas o muerde almohadas</title>
+<style>
+:root{--bg:#060813;--panel:#10162a;--panel2:#17213b;--orange:#ff8b16;--pink:#ff39c5;--cyan:#18c9ff;--green:#68f58e;--yellow:#ffd44d;--red:#ff5368;--text:#fff;--muted:#b9c4df;--shadow:0 25px 70px #000b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#344878 0,#10172b 38%,#05060d 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background:repeating-linear-gradient(0deg,#fff0 0 3px,#fff1 4px,#fff0 5px);mix-blend-mode:overlay;z-index:30}
+button,input,select{font:inherit}button{color:inherit;border:0;cursor:pointer;touch-action:manipulation}
+.app{min-height:100vh;display:grid;place-items:center;padding:18px;position:relative;overflow:hidden}.screen{width:min(1180px,100%);min-height:min(780px,calc(100vh - 36px));border:1px solid #ffffff18;border-radius:28px;overflow:hidden;background:#080b16ee;box-shadow:0 30px 100px #000b;position:relative}.hidden{display:none!important}
+/* PORTADA */
+.cover{min-height:min(780px,calc(100vh - 36px));display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 20px 36px;text-align:center;background-image:linear-gradient(to top,#04050ceF 0%,#05060e38 43%,#05060e00 70%),url('portada.png');background-size:cover;background-position:center;position:relative}.cover:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,#ff5b0014,#00c8ff0d 45%,#ff2ebc16);animation:coverGlow 5s ease-in-out infinite alternate}.cover-content{position:relative;z-index:2;width:min(850px,100%)}
+.kicker{display:inline-block;background:#050711dd;border:1px solid #ffffff25;padding:7px 14px;border-radius:999px;font-weight:900;letter-spacing:.08em;font-size:.76rem;margin-bottom:10px;box-shadow:0 8px 30px #0007}.main-title{font-weight:1000;text-transform:uppercase;line-height:.9;font-size:clamp(2.5rem,8vw,6.5rem);margin:0;text-shadow:0 6px 0 #000,0 10px 30px #000;letter-spacing:-.05em;background:linear-gradient(#ffe56a,#ff8b00 48%,#ff3bca 75%,#ff8be7);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{font-size:clamp(.95rem,2.2vw,1.2rem);font-weight:800;margin:16px auto 22px;max-width:700px;text-shadow:0 3px 12px #000}.cta{background:linear-gradient(180deg,#ffbd27,#ff6d00);padding:15px 28px;border-radius:16px;font-weight:1000;font-size:1.1rem;text-transform:uppercase;box-shadow:0 8px 0 #a73d00,0 18px 35px #0009;transition:.15s transform,.15s filter;min-width:230px}.cta:hover{filter:brightness(1.08);transform:translateY(-2px)}.cta:active{transform:translateY(5px);box-shadow:0 3px 0 #a73d00,0 10px 25px #0008}.cover-tools{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}.cover-tools .small-btn{background:#050711bb}
+/* JUEGO */
+.game{padding:16px;display:flex;flex-direction:column;gap:12px;min-height:min(780px,calc(100vh - 36px));background:radial-gradient(circle at 50% 5%,#25365e55,#050811 60%)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.brand{font-weight:1000;font-size:clamp(.95rem,3vw,1.35rem);text-transform:uppercase}.brand span{color:var(--pink)}.actions{display:flex;gap:7px;flex-wrap:wrap}.small-btn,.select-btn{background:#ffffff0e;border:1px solid #ffffff1d;border-radius:11px;padding:8px 12px;font-weight:850}.small-btn:hover,.select-btn:hover{background:#ffffff18}
+.control-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.control-group{display:flex;gap:5px;flex-wrap:wrap;background:#080d1caa;padding:4px;border-radius:14px;border:1px solid #ffffff10}.mode,.size{background:#121b32;border:1px solid #ffffff12;border-radius:10px;padding:8px 11px;font-weight:900}.mode.active,.size.active{background:linear-gradient(135deg,#ff8b00,#ff2dbd);box-shadow:0 5px 18px #ff3c7240}.online-badge{padding:8px 11px;border-radius:10px;background:#0d2419;color:#78ffa0;font-weight:900;border:1px solid #4dff8850}
+.hero-strip{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.fighter{display:flex;align-items:center;gap:9px;padding:8px 11px;border-radius:15px;background:linear-gradient(135deg,#ffffff0c,#ffffff05);border:1px solid #ffffff12}.fighter.right{justify-content:flex-end;text-align:right}.avatar{width:48px;height:48px;border-radius:13px;background:#0a1020;border:1px solid #ffffff18;display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 0 18px #0008}.avatar svg{width:42px;height:42px}.fighter b{display:block}.fighter small{display:block;color:var(--muted);font-weight:700}.vs{font-weight:1000;font-size:1.2rem;color:var(--yellow);text-shadow:0 3px 10px #000}
+.status{display:flex;align-items:center;justify-content:center;gap:9px;min-height:39px;font-weight:950;text-align:center}.turn-dot{width:12px;height:12px;border-radius:50%;display:inline-block;box-shadow:0 0 15px currentColor}.p1{color:var(--orange)}.p2{color:var(--cyan)}.p3{color:#a778ff}
+.board-wrap{flex:1;display:grid;place-items:center;min-height:0;perspective:1100px;padding:4px}.board{width:min(72vw,560px);height:min(72vw,560px);max-width:560px;max-height:560px;position:relative;transform:rotateX(13deg) rotateZ(-1deg);transform-style:preserve-3d;filter:drop-shadow(0 28px 28px #000b)}.board:before{content:"";position:absolute;inset:-18px;border-radius:30px;background:linear-gradient(145deg,#33476f,#10182c 45%,#070a13);transform:translateZ(-25px);box-shadow:inset 0 0 0 2px #ffffff10,0 12px 0 #03040a}.grid{position:absolute;inset:0;display:grid;gap:8px;padding:10px;transform-style:preserve-3d}.cell{position:relative;border-radius:14px;background:linear-gradient(145deg,#2a3a5f,#121b31);box-shadow:inset 2px 2px 0 #ffffff12,inset -5px -7px 10px #0008,0 5px 0 #050811;display:grid;place-items:center;transition:.15s transform,.15s filter;overflow:hidden;padding:0}.cell:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,#ffffff10,transparent 38%);pointer-events:none}.cell:not(.filled):hover{transform:translateZ(8px) scale(1.025);filter:brightness(1.18)}.cell.win{animation:pulse .55s infinite alternate;background:linear-gradient(145deg,#3d634b,#132b26)}.mark{width:72%;height:72%;position:relative;display:grid;place-items:center;transform:translateZ(18px);animation:pop .22s ease-out}.mark svg{width:100%;height:100%;overflow:visible}.mark.robot{filter:drop-shadow(0 5px 5px #0009)}
+.score{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.score-card{min-width:130px;background:#ffffff09;border:1px solid #ffffff16;border-radius:13px;padding:7px 12px;text-align:center}.score-card b{display:block;font-size:1.1rem}.score-card span{font-size:.72rem;color:var(--muted);font-weight:800}.help{text-align:center;color:var(--muted);font-size:.76rem}
+/* MODALES */
+.modal{position:fixed;inset:0;background:#02040bc2;backdrop-filter:blur(8px);display:grid;place-items:center;padding:18px;z-index:40}.dialog{width:min(560px,100%);background:linear-gradient(145deg,#1a2540,#0b1020);border:1px solid #ffffff20;border-radius:24px;padding:25px;box-shadow:0 30px 80px #000c;text-align:center}.dialog h2{margin:0 0 8px;font-size:clamp(1.7rem,5vw,2.3rem)}.dialog p{color:var(--muted);margin:0 0 18px}.dialog-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.dialog .cta{min-width:0}.form-row{display:flex;gap:8px;margin:10px 0}.form-row input{flex:1;min-width:0;background:#060a15;border:1px solid #ffffff18;border-radius:11px;padding:11px;color:#fff;outline:none}.room-code{font-size:2.2rem;letter-spacing:.18em;font-weight:1000;color:var(--yellow);margin:8px 0}.online-status{font-size:.85rem;color:var(--muted)}
+@keyframes pop{from{transform:translateZ(18px) scale(.2);opacity:0}to{transform:translateZ(18px) scale(1);opacity:1}}@keyframes pulse{from{filter:brightness(1)}to{filter:brightness(1.45)}}@keyframes coverGlow{from{opacity:.5}to{opacity:1}}
+@media(max-width:700px){.app{padding:0}.screen{border-radius:0;min-height:100vh}.cover,.game{min-height:100vh}.cover{padding-bottom:28px;background-position:center top}.game{padding:10px}.board{width:min(88vw,450px);height:min(88vw,450px)}.hero-strip{grid-template-columns:1fr 28px 1fr}.fighter{padding:6px}.avatar{width:38px;height:38px}.avatar svg{width:34px;height:34px}.fighter small{font-size:.68rem}.score-card{min-width:105px}.score-card b{font-size:1rem}.help{display:none}.brand{max-width:65%}.topbar{align-items:flex-start}}
+@media(max-height:650px) and (orientation:landscape){.game{gap:6px}.board{width:min(55vh,430px);height:min(55vh,430px)}.status{min-height:28px}.score-card{padding:4px 8px}.help{display:none}.hero-strip{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="coverScreen" class="screen">
+ <div class="cover">
+  <div class="cover-content">
+   <div class="kicker">VIDEOJUEGO · BATALLA DE TABLERO · 3D</div>
+   <h1 class="main-title">Sopla nucas<br>o muerde almohadas</h1>
+   <p class="subtitle">Elige tu modalidad, ocupa el tablero y demuestra quién domina la partida.</p>
+   <button id="startBtn" class="cta">▶ Iniciar juego</button>
+   <div class="cover-tools"><button id="coverOnline" class="small-btn">🌐 Jugar en línea</button><button id="musicBtn" class="small-btn">🎵 Música: activa</button></div>
+  </div>
+ </div>
+</section>
+
+<section id="gameScreen" class="screen hidden">
+ <div class="game">
+  <div class="topbar"><div class="brand">Sopla nucas <span>×</span> muerde almohadas</div><div class="actions"><button class="small-btn" id="musicToggle">🎵</button><button class="small-btn" id="restartBtn">↻ Reiniciar</button><button class="small-btn" id="homeBtn">⌂ Portada</button></div></div>
+  <div class="control-row">
+   <div class="control-group"><button class="mode active" data-mode="ai">🤖 CPU</button><button class="mode" data-mode="local">👥 Local</button><button class="mode" data-mode="online">🌐 En línea</button></div>
+   <div class="control-group"><button class="size active" data-size="3">3×3</button><button class="size" data-size="4">4×4</button><button class="size" data-size="5">5×5</button></div>
+   <button id="onlineRoomBtn" class="small-btn hidden">🔗 Sala online</button>
+  </div>
+  <div class="hero-strip">
+   <div class="fighter"><div class="avatar" id="avatar1"></div><div><b>Él sopla nucas</b><small>Cabeza de tortuga · 🟠</small></div></div>
+   <div class="vs">VS</div>
+   <div class="fighter right"><div><b id="opponentName">El muerde almohadas</b><small id="opponentDesc">Almeja abierta · 🔵</small></div><div class="avatar" id="avatar2"></div></div>
+  </div>
+  <div id="status" class="status"><span class="turn-dot p1"></span> Turno de Él sopla nucas</div>
+  <div class="board-wrap"><div id="board" class="board"><div id="grid" class="grid"></div></div></div>
+  <div class="score"><div class="score-card"><b id="scoreX">0</b><span>🐢 Sopla nucas</span></div><div class="score-card"><b id="scoreO">0</b><span>🦪 Muerde almohadas</span></div><div class="score-card"><b id="scoreR">0</b><span>🤖 CPU / jugador 3</span></div><div class="score-card"><b id="scoreDraw">0</b><span>Empates</span></div></div>
+  <div class="help">3×3 requiere 3 en línea. En 4×4 y 5×5 también gana quien consiga 3 consecutivas.</div>
+ </div>
+</section>
+</div>
+
+<div id="resultModal" class="modal hidden"><div class="dialog"><h2 id="modalTitle">¡Victoria!</h2><p id="modalText"></p><div class="dialog-actions"><button id="nextBtn" class="cta">Jugar otra partida</button><button id="modalHome" class="small-btn">Portada</button></div></div></div>
+<div id="onlineModal" class="modal hidden"><div class="dialog"><h2>🌐 Partida en línea</h2><p id="onlineInfo">Crea una sala y comparte el código con tu rival.</p><div id="roomCode" class="room-code">----</div><div class="form-row"><input id="roomInput" maxlength="6" placeholder="Código de sala"><button id="joinRoomBtn" class="small-btn">Unirse</button></div><div class="dialog-actions"><button id="createRoomBtn" class="cta">Crear sala</button><button id="closeOnline" class="small-btn">Cerrar</button></div><div class="online-status" id="onlineStatus">Servidor: sin conectar</div></div></div>
+
+<script>
+(() => {
+'use strict';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const cover=$('#coverScreen'),gameScreen=$('#gameScreen'),grid=$('#grid'),status=$('#status'),resultModal=$('#resultModal'),onlineModal=$('#onlineModal');
+const modalTitle=$('#modalTitle'),modalText=$('#modalText'),nextBtn=$('#nextBtn');
+let N=3,WIN=3,board=[],turn=0,mode='ai',gameOver=false,scores={0:0,1:0,2:0,D:0},musicOn=true,audioCtx=null,musicTimer=null,ws=null,roomCode='';
+const players=[
+ {name:'Él sopla nucas',desc:'Cabeza de tortuga',color:'p1',key:'turtle'},
+ {name:'El muerde almohadas',desc:'Almeja abierta',color:'p2',key:'clam'},
+ {name:'La CPU',desc:'Cabeza de robot',color:'p3',key:'robot'}
+];
+
+function svg(type){
+ if(type==='turtle')return `<svg viewBox="0 0 100 100"><path d="M24 66Q13 57 18 39Q23 20 43 18Q63 13 78 28Q91 42 82 60Q74 77 52 78Q35 79 24 66Z" fill="#4fd36e" stroke="#143b29" stroke-width="5"/><ellipse cx="52" cy="50" rx="29" ry="24" fill="#72ed82" stroke="#163d29" stroke-width="5"/><circle cx="43" cy="47" r="4" fill="#111"/><circle cx="63" cy="47" r="4" fill="#111"/><path d="M47 60Q53 65 59 60" fill="none" stroke="#173a27" stroke-width="4" stroke-linecap="round"/><path d="M24 35L13 27M75 32L88 25M28 67L16 74M75 67L88 75" stroke="#4fd36e" stroke-width="9" stroke-linecap="round"/></svg>`;
+ if(type==='clam')return `<svg viewBox="0 0 100 100"><path d="M10 66Q20 30 50 23Q80 30 90 66Q51 87 10 66Z" fill="#ff79c9" stroke="#6e245a" stroke-width="5"/><path d="M10 66Q50 42 90 66Q51 55 10 66Z" fill="#ffd1eb" stroke="#8e3a75" stroke-width="4"/><path d="M22 57Q49 35 78 57M31 65Q51 49 70 64" fill="none" stroke="#e64da8" stroke-width="3"/></svg>`;
+ return `<svg viewBox="0 0 100 100"><rect x="19" y="18" width="62" height="62" rx="14" fill="#aeb8c7" stroke="#263448" stroke-width="6"/><rect x="29" y="34" width="42" height="25" rx="7" fill="#172338"/><circle cx="40" cy="46" r="5" fill="#39e7ff"/><circle cx="60" cy="46" r="5" fill="#ff5875"/><path d="M38 68H62" stroke="#263448" stroke-width="5" stroke-linecap="round"/><path d="M50 18V8M50 8L44 12M50 8L56 12M19 50H10M81 50H90" stroke="#aeb8c7" stroke-width="5" stroke-linecap="round"/></svg>`;
+}
+$('#avatar1').innerHTML=svg('turtle');$('#avatar2').innerHTML=svg('clam');
+
+function makeGrid(){grid.style.gridTemplateColumns=`repeat(${N},1fr)`;grid.style.gridTemplateRows=`repeat(${N},1fr)`;}
+function winsFor(b,p){
+ const lines=[];
+ for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+  if(c+WIN<=N)lines.push(Array.from({length:WIN},(_,k)=>(r*N)+c+k));
+  if(r+WIN<=N)lines.push(Array.from({length:WIN},(_,k)=>(r+k)*N+c));
+  if(r+WIN<=N&&c+WIN<=N)lines.push(Array.from({length:WIN},(_,k)=>(r+k)*N+c+k));
+  if(r+WIN<=N&&c-WIN+1>=0)lines.push(Array.from({length:WIN},(_,k)=>(r+k)*N+c-k));
+ }
+ return lines.filter(line=>line.every(i=>b[i]===p));
+}
+function result(){for(let p=0;p<3;p++){const line=winsFor(board,p);if(line.length)return {winner:p,line:line[0]};}if(board.every(v=>v!==null))return {winner:'D',line:[]};return null;}
+function markSVG(p){return svg(players[p].key)}
+function render(){
+ makeGrid();grid.innerHTML='';board.forEach((v,i)=>{const cell=document.createElement('button');cell.className='cell'+(v!==null?' filled':'');cell.dataset.i=i;cell.setAttribute('aria-label',v===null?`Casilla ${i+1} vacía`:`Casilla ${i+1}: ${players[v].name}`);if(v!==null){const mark=document.createElement('div');mark.className=`mark ${players[v].key}`;mark.innerHTML=markSVG(v);cell.appendChild(mark)}cell.onclick=()=>play(i);grid.appendChild(cell)});['X','O','R','D'].forEach((k,j)=>{if(j<3)$(`#score${k}`).textContent=scores[j];});$('#scoreDraw').textContent=scores.D;updateStatus();}
+function updateStatus(){if(gameOver)return;let p=turn;let msg=players[p].name;if(mode==='ai'&&p===2)msg='La CPU está pensando…';if(mode==='online')msg=`Turno de ${players[p].name}${onlineMyPlayer!==null&&onlineMyPlayer!==p?' (espera al rival)':''}`;status.innerHTML=`<span class="turn-dot ${players[p].color}"></span> ${msg}`;}
+function resetRound(){board=Array(N*N).fill(null);turn=0;gameOver=false;resultModal.classList.add('hidden');render();}
+function resetMatch(){scores={0:0,1:0,2:0,D:0};resetRound();}
+function play(i){if(gameOver||board[i]!==null)return;if(mode==='ai'&&turn===2)return;if(mode==='online'&&turn!==onlineMyPlayer)return;place(i,turn);}
+function place(i,p){board[i]=p;beep(p);render();const r=result();if(r){finish(r);return}turn=(turn+1)%playerCount();render();if(mode==='ai'&&turn===2)setTimeout(cpuMove,360);if(mode==='online')send({type:'move',i,p,next:turn});}
+function playerCount(){return N>=4&&mode==='local'?3:(mode==='online'?2:2);}
+function cpuMove(){if(gameOver||mode!=='ai'||turn!==2)return;const m=chooseCPU();place(m,2);}
+function chooseCPU(){const empt=board.map((v,i)=>v===null?i:null).filter(i=>i!==null);for(const i of empt){board[i]=2;if(winsFor(board,2).length){board[i]=null;return i}board[i]=null}for(const i of empt){board[i]=0;if(winsFor(board,0).length){board[i]=null;return i}board[i]=null}if(N>=4){for(const i of empt){board[i]=1;if(winsFor(board,1).length){board[i]=null;return i}board[i]=null}}
+ let best=empt[0],score=-Infinity;for(const i of empt){let s=0;const r=Math.floor(i/N),c=i%N;const center=(N-1)/2;s+=10-(Math.abs(r-center)+Math.abs(c-center));board[i]=2;s+=heuristic(2)*2;board[i]=null;if(s>score){score=s;best=i}}return best;}
+function heuristic(p){let s=0;for(let r=0;r<N;r++)for(let c=0;c<N;c++){const i=r*N+c;if(board[i]===p)s++;}return s;}
+function finish(r){gameOver=true;if(r.winner==='D'){scores.D++;modalTitle.textContent='¡Empate!';modalText.textContent='El tablero quedó lleno. Esta batalla termina en tablas.';drawSound();}else{scores[r.winner]++;modalTitle.textContent=`¡${players[r.winner].name} gana!`;modalText.textContent=r.winner===0?'La tortuga domina el tablero. ¡Victoria para Sopla nucas!':r.winner===1?'La almeja se lleva la partida. ¡Victoria para Muerde almohadas!':'La inteligencia mecánica conquistó el tablero.';for(const i of r.line)grid.children[i].classList.add('win');if(r.winner===0)evilLaugh();else if(r.winner===1)scream();else robotFail();}render();setTimeout(()=>resultModal.classList.remove('hidden'),180);if(mode==='online')send({type:'result',r});}
+function beep(p){const f=[520,330,220][p]||400; tone(f,.08,p===2?'square':'triangle',.035);}
+function tone(freq,dur,type='sine',vol=.03){try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(vol,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur);}catch(e){}}
+function drawSound(){tone(180,.18,'sawtooth',.035);setTimeout(()=>tone(140,.22,'sawtooth',.025),100)}
+function scream(){try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();const now=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(360,now);o.frequency.exponentialRampToValueAtTime(1050,now+.45);o.frequency.exponentialRampToValueAtTime(210,now+.9);g.gain.setValueAtTime(.001,now);g.gain.exponentialRampToValueAtTime(.12,now+.12);g.gain.exponentialRampToValueAtTime(.001,now+.95);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(now+1)}catch(e){}}
+function evilLaugh(){[0,170,330,500].forEach((d,i)=>setTimeout(()=>tone(260+i*55,.12,'square',.045),d));}
+function robotFail(){[0,120,240,360,500].forEach((d,i)=>setTimeout(()=>tone(600-i*100,.13,'sawtooth',.04),d));}
+function startMusic(){if(!musicOn||musicTimer)return;try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();audioCtx.resume();let step=0;const notes=[110,138,164,123,98,146,116,155];musicTimer=setInterval(()=>{if(!musicOn)return;const f=notes[step++%notes.length];tone(f,.38,'sine',.012);if(step%4===0)tone(f*2,.12,'triangle',.008)},430)}catch(e){}}
+function stopMusic(){clearInterval(musicTimer);musicTimer=null}
+function toggleMusic(){musicOn=!musicOn;$('#musicBtn').textContent=`🎵 Música: ${musicOn?'activa':'apagada'}`;$('#musicToggle').textContent=musicOn?'🎵':'🔇';if(musicOn)startMusic();else stopMusic()}
+$('#musicBtn').onclick=toggleMusic;$('#musicToggle').onclick=toggleMusic;
+$('#startBtn').onclick=()=>{cover.classList.add('hidden');gameScreen.classList.remove('hidden');startMusic();resetMatch()};
+$('#coverOnline').onclick=()=>{cover.classList.add('hidden');gameScreen.classList.remove('hidden');setMode('online');openOnline();startMusic()};
+$('#restartBtn').onclick=()=>{resetMatch();startMusic()};$('#homeBtn').onclick=()=>{gameScreen.classList.add('hidden');cover.classList.remove('hidden');resultModal.classList.add('hidden')};$('#modalHome').onclick=()=>$('#homeBtn').click();nextBtn.onclick=resetRound;
+$$('.mode').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$$('.size').forEach(b=>b.onclick=()=>{N=+b.dataset.size;$$('.size').forEach(x=>x.classList.remove('active'));b.classList.add('active');resetMatch();updatePlayers()});
+function setMode(m){mode=m;$$('.mode').forEach(x=>x.classList.toggle('active',x.dataset.mode===m));$('#onlineRoomBtn').classList.toggle('hidden',m!=='online');updatePlayers();resetMatch();if(m==='online')openOnline();}
+function updatePlayers(){const online=mode==='online';$('#opponentName').textContent=online?'Rival en línea':'El muerde almohadas';$('#opponentDesc').textContent=online?'Jugador remoto · 🟢':'Almeja abierta · 🔵';$('#avatar2').innerHTML=online?svg('robot'):svg('clam');}
+
+// ONLINE: WebSocket relay. Requires server.js running/deployed.
+let onlineMyPlayer=null;
+function wsUrl(){const p=location.protocol==='https:'?'wss':'ws';return `${p}://${location.host}`}
+function connectWS(){if(ws&&ws.readyState<=1)return;try{ws=new WebSocket(wsUrl());$('#onlineStatus').textContent='Servidor: conectando…';ws.onopen=()=>{$('#onlineStatus').textContent='Servidor: conectado';};ws.onmessage=e=>{const m=JSON.parse(e.data);handleNet(m)};ws.onclose=()=>{$('#onlineStatus').textContent='Servidor: desconectado';};ws.onerror=()=>{$('#onlineStatus').textContent='Servidor: no disponible'};}catch(e){$('#onlineStatus').textContent='Servidor: no disponible'}}
+function send(m){if(ws?.readyState===1)ws.send(JSON.stringify(m))}
+function openOnline(){onlineModal.classList.remove('hidden');connectWS()}
+$('#onlineRoomBtn').onclick=openOnline;$('#closeOnline').onclick=()=>onlineModal.classList.add('hidden');
+$('#createRoomBtn').onclick=()=>{connectWS();setTimeout(()=>send({type:'create',size:N}),120)};
+$('#joinRoomBtn').onclick=()=>{const code=$('#roomInput').value.trim().toUpperCase();if(code)send({type:'join',code,size:N})};
+function handleNet(m){
+ if(m.type==='created'){roomCode=m.code;onlineMyPlayer=0;$('#roomCode').textContent=m.code;$('#onlineInfo').textContent='Sala creada. Comparte el código con tu rival y espera su conexión.';}
+ if(m.type==='joined'){roomCode=m.code;onlineMyPlayer=m.player;N=m.size;$$('.size').forEach(x=>x.classList.toggle('active',+x.dataset.size===N));$('#roomCode').textContent=m.code;$('#onlineInfo').textContent='Conectado. El anfitrión comienza la partida.';onlineModal.classList.add('hidden');resetMatch();}
+ if(m.type==='ready'){onlineModal.classList.add('hidden');onlineMyPlayer=m.player;N=m.size;resetMatch();}
+ if(m.type==='move'){if(board[m.i]===null){board[m.i]=m.p;turn=m.next;beep(m.p);render();const r=result();if(r&&!gameOver)finish(r)}}
+ if(m.type==='room_full')$('#onlineInfo').textContent='La sala ya está llena.';
+ if(m.type==='error')$('#onlineInfo').textContent=m.message||'No se pudo completar la operación.';
+}
+render();
+})();
+</script>
+</body>
+</html>
